@@ -32,6 +32,10 @@ module.exports = AFRAME.registerComponent('animation-mixer', {
 
     const model = this.el.getObject3D('mesh');
 
+    this.el.getActiveActions = () => {
+      return this.activeActions;
+    };
+
     if (model) {
       this.load(model);
     } else {
