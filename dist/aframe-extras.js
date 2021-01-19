@@ -9868,6 +9868,10 @@ module.exports = AFRAME.registerComponent('animation-mixer', {
 
     var model = this.el.getObject3D('mesh');
 
+    this.el.getActiveActions = function () {
+      return _this.activeActions;
+    };
+
     if (model) {
       this.load(model);
     } else {
@@ -11065,7 +11069,7 @@ module.exports = AFRAME.registerComponent('nav-agent', {
       // ground, not traveling in a straight line from higher to lower waypoints.
       raycaster.ray.origin.copy(vNext);
       raycaster.ray.origin.y += 1.5;
-      raycaster.ray.direction.y = -1;
+      raycaster.ray.direction = { x: 0, y: -1, z: 0 };
       var intersections = raycaster.intersectObject(this.system.getNavMesh());
 
       if (!intersections.length) {

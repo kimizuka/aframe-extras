@@ -7295,6 +7295,10 @@ module.exports = AFRAME.registerComponent('animation-mixer', {
 
     var model = this.el.getObject3D('mesh');
 
+    this.el.getActiveActions = function () {
+      return _this.activeActions;
+    };
+
     if (model) {
       this.load(model);
     } else {
